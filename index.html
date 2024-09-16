@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+
+    .container {
+      height: 45%;
+      width: 45%;
+      display: grid;
+      grid-template-rows: 35% 65%;
+      align-items: center;
+      justify-items: center;
+      border: 3rem soloid #1a1a1a;
+      border-radius: 3rem;
+    }
+    h1 {
+      margin-top: 3rem;
+      font-size: 3.5rem;
+      text-align: center;
+      padding: 0 2rem;
+      border-bottom: 2px solid #1a1a1a;
+      background: linear-gradient(90deg, #00dbde, #fc00fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .box {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem;
+      width: 70%;
+      height: 8rem;
+      align-items: center;
+      color: white;
+      background-color: #1a1a1a;
+      position: relative;
+      border-radius: 1rem;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+    .clock p {
+      font-size: 1rem;
+    }
+    .clock::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 90%;
+        height: 8rem;
+        background:linear-gradient(0deg,transparent, transparent,#2370f5,#2370f5, #2370f5); ;
+        z-index: 1;
+        transform-origin: bottom right;
+        animation: animation 6s linear infinite;
+    }
+
+    .clock::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 90%;
+        height: 8rem;
+        background:linear-gradient(0deg,transparent, transparent,#b91fdc,#b91fdc, #b91fdc); ;
+        z-index: 0;
+        transform-origin: bottom right;
+        animation: animation 6s linear infinite;
+        animation-delay: -3s;
+    }
+
+    @keyframes animation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .front-clock {
+       text-align: center;
+       padding-top: .6rem;
+       background-color: #0d0d0d;
+       width: 95%;
+       height: 95%;border-radius: 1rem;
+       z-index: 1;
+    }
+    @media (max-width: 890px) {
+        .container{
+            width: 60%;
+        }
+        .clock{
+            font-size: 3rem;
+        }
+    }
+    @media (max-width: 500px) {
+        .container{
+            grid-template-rows: 20% 80%;
+        }
+        .clock{
+            font-size: 2rem;
+        }
+        h1{
+            margin-top: 0;
+        }
+        .box{
+            display: grid;
+            grid-template-rows: 33% 33% 33%;
+        }
+        .clock{
+         width: 30vh;
+         margin: 0;
+         font-size: 4rem;
+         margin-top: .8rem;
+    }
+}
+  </style>
+  <body>
+    <main class="container">
+      <h1 class="day" id="day"></h1>
+      <div class="box">
+        <div class="clock">
+          <div class="front-clock">
+            <div id="hour">00</div>
+            <p>HOUR</p>
+          </div>
+        </div>
+        <div class="clock">
+            <div class="front-clock">
+              <div id="minute">00</div>
+              <p>Minute </p>
+            </div>
+          </div> <div class="clock">
+            <div class="front-clock">
+              <div id="second">00</div>
+              <p>second</p>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
